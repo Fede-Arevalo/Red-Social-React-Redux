@@ -17,7 +17,6 @@ const Header = () => {
 
   return (
     <nav>
-      <span>Header</span>
       <span>
         <Link to="/">Home</Link>
       </span>
