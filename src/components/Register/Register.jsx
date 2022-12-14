@@ -24,6 +24,8 @@ const Register = () => {
   };
 
   return (
+    <>
+    <h1>Register</h1>
     <form onSubmit={onSubmit}>
       <input type="text" name="name" value={name} placeholder="name" onChange={onChange} />
       <input type="email" name="email" value={email} placeholder="email" onChange={onChange} />
@@ -31,6 +33,7 @@ const Register = () => {
       <input type="number" name="age" value={age} onChange={onChange} />
       <input type="file" name="image" value={image} onChange={onChange} />
     </form>
+    </>
   );
 };
 

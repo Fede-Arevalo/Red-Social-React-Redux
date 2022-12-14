@@ -1,9 +1,47 @@
-import React from 'react'
+import React, { useState } from "react";
 
 const Login = () => {
-  return (
-    <div>Login</div>
-  )
-}
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-export default Login
+  const { email, password } = formData;
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log("formData", formData);
+  };
+
+  return (
+    <>
+      <div>Login</div>
+      <form onSubmit={onSubmit}>
+        <input
+          type="email"
+          name="email"
+          value={email}
+          placeholder="email"
+          onChange={onChange}
+        />
+        <input
+          type="password"
+          name="password"
+          value={password}
+          placeholder="password"
+          onChange={onChange}
+        />
+        <button type="submit">Login</button>
+      </form>
+    </>
+  );
+};
+
+export default Login;
