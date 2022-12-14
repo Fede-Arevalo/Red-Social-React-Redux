@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { register } from "../../features/auth/authSlice";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +13,8 @@ const Register = () => {
 
   const { name, email, password, age, image } = formData;
 
+  const dispatch = useDispatch();
+
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -20,19 +24,37 @@ const Register = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("formData", formData);
+    dispatch(register(formData));
   };
 
   return (
     <>
-    <h1>Register</h1>
-    <form onSubmit={onSubmit}>
-      <input type="text" name="name" value={name} placeholder="name" onChange={onChange} />
-      <input type="email" name="email" value={email} placeholder="email" onChange={onChange} />
-      <input type="password" name="password" value={password} placeholder="password" onChange={onChange} />
-      <input type="number" name="age" value={age} onChange={onChange} />
-      <input type="file" name="image" value={image} onChange={onChange} />
-    </form>
+      <h1>Register</h1>
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          name="name"
+          value={name}
+          placeholder="name"
+          onChange={onChange}
+        />
+        <input
+          type="email"
+          name="email"
+          value={email}
+          placeholder="email"
+          onChange={onChange}
+        />
+        <input
+          type="password"
+          name="password"
+          value={password}
+          placeholder="password"
+          onChange={onChange}
+        />
+        <input type="number" name="age" value={age} onChange={onChange} />
+        <input type="file" name="image" value={image} onChange={onChange} />
+      </form>
     </>
   );
 };
