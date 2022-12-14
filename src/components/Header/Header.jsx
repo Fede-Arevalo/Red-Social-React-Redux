@@ -16,30 +16,37 @@ const Header = () => {
   };
 
   return (
-    <>
-      <nav>
-        <span>Header</span>
-        <div>
-          {user ? (
+    <nav>
+      <span>Header</span>
+      <span>
+        <Link to="/">Home</Link>
+      </span>
+      <div>
+        {user ? (
+          <>
+            <span>
+              <Link to="/profile">{user.user.name}</Link>
+            </span>
+
             <span>
               <Link to="/" onClick={onLogout}>
                 Logout
               </Link>
             </span>
-          ) : (
-            <>
-              <span>
-                <Link to="/login">Login</Link>
-              </span>
+          </>
+        ) : (
+          <>
+            <span>
+              <Link to="/login">Login</Link>
+            </span>
 
-              <span>
-                <Link to="/register">Register</Link>
-              </span>
-            </>
-          )}
-        </div>
-      </nav>
-    </>
+            <span>
+              <Link to="/register">Register</Link>
+            </span>
+          </>
+        )}
+      </div>
+    </nav>
   );
 };
 
