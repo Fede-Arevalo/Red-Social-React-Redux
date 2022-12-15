@@ -11,6 +11,7 @@ const PostDetail = () => {
 
   useEffect(() => {
     dispatch(getPostById(_id));
+    // eslint-disable-next-line
   }, []);
 
   return (
