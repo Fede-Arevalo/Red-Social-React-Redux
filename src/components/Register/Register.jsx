@@ -24,14 +24,14 @@ const Register = () => {
   useEffect(() => {
     if (isSuccess) {
       notification.success({
-        message: "Success",
-        description: message,
+        message: `Welcome! ${name}`,
+        description: "Successfully registered",
       });
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     }
-    setTimeout(() => {
-      navigate("/login");
-    }, 2000);
-    
+
     if (isError) {
       notification.error({ message: "Error", description: message });
     }
@@ -55,10 +55,6 @@ const Register = () => {
       });
     } else {
       dispatch(register(formData));
-      notification.success({
-        message: `Welcome! ${name}`,
-        description: "Successfully registered",
-      });
     }
   };
 

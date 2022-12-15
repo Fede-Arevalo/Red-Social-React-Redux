@@ -20,25 +20,27 @@ const Header = () => {
       <span>
         <Link to="/">Home</Link>
       </span>
+      <br />
       <div>
         {user ? (
           <>
             <span>
               <Link to="/profile">{user.user.name}</Link>
             </span>
-
+            <br />
             <span>
               <Link to="/" onClick={onLogout}>
                 Logout
               </Link>
             </span>
+            <br />
           </>
         ) : (
           <>
             <span>
               <Link to="/login">Login</Link>
             </span>
-
+            <br />
             <span>
               <Link to="/register">Register</Link>
             </span>
