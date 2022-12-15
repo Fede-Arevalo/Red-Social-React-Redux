@@ -5,6 +5,8 @@ import Home from "./components/Home/Home";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
+import PostDetail from "./components/PostDetail/PostDetail";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/post/:_id" element={<PostDetail />} />
         </Routes>
       </BrowserRouter>
     </div>
