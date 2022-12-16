@@ -14,7 +14,7 @@ const Header = () => {
   const handleChange = (e) => {
     setText(e.target.value);
     if (e.key === "Enter") {
-      navigate("/search/" + text)
+      navigate("/search/" + text);
     }
   };
 
@@ -26,34 +26,25 @@ const Header = () => {
 
   return (
     <nav>
-      <span>
-        <Link to="/">Home</Link>
-      </span>
+      <Link to="/">Home</Link>
       <br />
       <input onKeyUp={handleChange} placeholder="search post" name="text" />
       <div>
         {user ? (
           <>
-            <span>
-              <Link to="/profile">{user.user.name}</Link>
-            </span>
+            <Link to="/profile">{user.user.name}</Link>
             <br />
-            <span>
-              <Link to="/" onClick={onLogout}>
-                Logout
-              </Link>
-            </span>
+            <Link to="/" onClick={onLogout}>
+              Logout
+            </Link>
             <br />
+            {user.user.role === "admin" ? <Link to="/admin">Admin</Link> : ""}
           </>
         ) : (
           <>
-            <span>
-              <Link to="/login">Login</Link>
-            </span>
+            <Link to="/login">Login</Link>
             <br />
-            <span>
-              <Link to="/register">Register</Link>
-            </span>
+            <Link to="/register">Register</Link>
           </>
         )}
       </div>
