@@ -10,7 +10,13 @@ const PostAdmin = () => {
   const post = posts.map((post) => {
     return (
       <div className="post" key={post._id}>
-        <p>{post.title}</p>
+        <h2>{post.title}</h2>
+        <img
+          src={"http://localhost:8080/" + post.image}
+          alt={post.title}
+          width="90px"
+        />
+        <br />
         <button onClick={() => dispatch(deletePostAdmin(post._id))}>X</button>
       </div>
     );

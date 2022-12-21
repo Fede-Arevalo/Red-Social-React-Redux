@@ -32,6 +32,8 @@ const Header = () => {
       <div>
         {user ? (
           <>
+            <Link to="/addPost">Add Post</Link>
+            <br />
             <Link to="/profile">{user.user.name}</Link>
             <br />
             <Link to="/" onClick={onLogout}>

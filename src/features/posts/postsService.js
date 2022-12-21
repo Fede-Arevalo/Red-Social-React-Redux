@@ -2,6 +2,16 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080";
 
+const createPost = async (postData) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.post(API_URL + "/posts/createPost/", postData, {
+    headers: {
+      authorization: user?.token,
+    },
+  });
+  return res.data;
+};
+
 const getAllPosts = async () => {
   const res = await axios.get(API_URL + "/posts/getAllPosts");
   return res.data;
@@ -37,12 +47,43 @@ const deletePostAdmin = async (_id) => {
   return res.data;
 };
 
+const like = async (_id) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.put(
+    API_URL + "/posts/like/" + _id,
+    {},
+    {
+      headers: {
+        authorization: user?.token,
+      },
+    }
+  );
+  return res.data;
+};
+
+const dislike = async (_id) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.put(
+    API_URL + "/posts/dislike/" + _id,
+    {},
+    {
+      headers: {
+        authorization: user?.token,
+      },
+    }
+  );
+  return res.data;
+};
+
 const postsService = {
+  createPost,
   getAllPosts,
   getPostById,
   getPostByName,
   deletePost,
   deletePostAdmin,
+  like,
+  dislike,
 };
 
 export default postsService;

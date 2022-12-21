@@ -31,7 +31,6 @@ const Register = () => {
         navigate("/login");
       }, 2000);
     }
-
     if (isError) {
       notification.error({ message: "Error", description: message });
     }

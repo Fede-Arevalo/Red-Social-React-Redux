@@ -7,6 +7,7 @@ const PostDetail = () => {
   const { _id } = useParams();
   const { post } = useSelector((state) => state.posts);
 
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -14,10 +15,12 @@ const PostDetail = () => {
     // eslint-disable-next-line
   }, []);
 
+  
   return (
     <div>
-      <h1>PostDetail</h1>
-      <p>{post.title}</p>
+      <h1>PostDetail</h1>      
+      <img src={"http://localhost:8080/" + post.image} alt={post.title} width="490px"/>
+      <h1>{post.title}</h1>
       <p>{post.body}</p>
     </div>
   );

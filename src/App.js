@@ -9,6 +9,7 @@ import Profile from "./components/Profile/Profile";
 import PostDetail from "./components/PostDetail/PostDetail";
 import Search from "./components/Search/Search";
 import Admin from "./components/Admin/Admin";
+import AddPost from "./components/AddPost/AddPost";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/post/:_id" element={<PostDetail />} />
           <Route path="/search/:postName" element={<Search />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/addPost" element={<AddPost />} />
         </Routes>
       </BrowserRouter>
     </div>

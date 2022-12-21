@@ -7,6 +7,17 @@ const initialState = {
   post: {},
 };
 
+export const createPost = createAsyncThunk(
+  "posts/createPost",
+  async (postData) => {
+    try {
+      return await postsService.createPost(postData);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
 export const getAllPosts = createAsyncThunk("posts/getAllPosts", async () => {
   try {
     return await postsService.getAllPosts();
@@ -45,9 +56,28 @@ export const deletePost = createAsyncThunk("posts/deletePost", async (_id) => {
   }
 });
 
-export const deletePostAdmin = createAsyncThunk("posts/deletePostAdmin", async (_id) => {
+export const deletePostAdmin = createAsyncThunk(
+  "posts/deletePostAdmin",
+  async (_id) => {
+    try {
+      return await postsService.deletePostAdmin(_id);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
+export const like = createAsyncThunk("posts/like", async (_id) => {
   try {
-    return await postsService.deletePostAdmin(_id);
+    return await postsService.like(_id);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+export const dislike = createAsyncThunk("posts/dislike", async (_id) => {
+  try {
+    return await postsService.dislike(_id);
   } catch (error) {
     console.error(error);
   }
@@ -62,31 +92,58 @@ export const postsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getAllPosts.fulfilled, (state, action) => {
-      state.posts = action.payload;
-    });
+    builder
+      .addCase(createPost.fulfilled, (state, action) => {
+        state.post = action.payload;
+      })
 
-    builder.addCase(getAllPosts.pending, (state) => {
-      state.isLoading = true;
-    });
+      .addCase(getAllPosts.fulfilled, (state, action) => {
+        state.posts = action.payload;
+      })
 
-    builder.addCase(getPostById.fulfilled, (state, action) => {
-      state.post = action.payload;
-    });
+      .addCase(getAllPosts.pending, (state) => {
+        state.isLoading = true;
+      })
 
-    builder.addCase(getPostByName.fulfilled, (state, action) => {
-      state.posts = action.payload;
-    });
-    builder.addCase(deletePost.fulfilled, (state, action) => {
-      state.posts = state.posts.filter(
-        (post) => post._id !== action.payload.post._id
-      );
-    });
-    builder.addCase(deletePostAdmin.fulfilled, (state, action) => {
-      state.posts = state.posts.filter(
-        (post) => post._id !== action.payload.post._id
-      );
-    });
+      .addCase(getPostById.fulfilled, (state, action) => {
+        state.post = action.payload;
+      })
+
+      .addCase(getPostByName.fulfilled, (state, action) => {
+        state.posts = action.payload;
+      })
+
+      .addCase(deletePost.fulfilled, (state, action) => {
+        state.posts = state.posts.filter(
+          (post) => post._id !== action.payload.post._id
+        );
+      })
+
+      .addCase(deletePostAdmin.fulfilled, (state, action) => {
+        state.posts = state.posts.filter(
+          (post) => post._id !== action.payload.post._id
+        );
+      })
+
+      .addCase(like.fulfilled, (state, action) => {
+        const posts = state.posts.map((post) => {
+          if (post._id === action.payload._id) {
+            post = action.payload;
+          }
+          return post;
+        });
+        state.posts = posts;
+      })
+
+      .addCase(dislike.fulfilled, (state, action) => {
+        const posts = state.posts.map((post) => {
+          if (post._id === action.payload._id) {
+            post = action.payload;
+          }
+          return post;
+        });
+        state.posts = posts;
+      });
   },
 });
 
