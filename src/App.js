@@ -10,6 +10,7 @@ import PostDetail from "./components/PostDetail/PostDetail";
 import Search from "./components/Search/Search";
 import Admin from "./components/Admin/Admin";
 import AddPost from "./components/AddPost/AddPost";
+import AddComment from "./components/AddComment/AddComment";
 import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/search/:postName" element={<Search />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/addPost" element={<AddPost />} />
+          <Route path="/addComment/:_id" element={<AddComment />} />
         </Routes>
       </BrowserRouter>
       <Footer />

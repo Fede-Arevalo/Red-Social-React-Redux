@@ -37,6 +37,10 @@ const AddPost = () => {
     formData.set("body", e.target.body.value);
 
     dispatch(createPost(formData));
+
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
   };
 
   return (
@@ -47,22 +51,15 @@ const AddPost = () => {
         <form onSubmit={onSubmit}>
           <br />
           <br />
-
           <input type="file" name="imagePost" placeholder="image" />
-
           <br />
           <br />
-
           <input type="text" name="title" placeholder="Title" />
-
           <br />
           <br />
-
           <input type="text" name="body" placeholder="Write something" />
-
           <br />
           <br />
-
           <button type="submit">Publish</button>
         </form>
       </div>

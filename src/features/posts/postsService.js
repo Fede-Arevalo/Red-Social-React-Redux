@@ -23,7 +23,7 @@ const getPostById = async (_id) => {
 };
 
 const getPostByName = async (postTitle) => {
-  const res = await axios.get(API_URL + "/posts//getPostByName/" + postTitle);
+  const res = await axios.get(API_URL + "/posts/getPostByName/" + postTitle);
   return res.data;
 };
 
