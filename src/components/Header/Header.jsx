@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
+import "./Header.scss"
 
 const Header = () => {
   const navigate = useNavigate();
@@ -25,32 +26,34 @@ const Header = () => {
   };
 
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      <br />
-      <input onKeyUp={handleChange} placeholder="search post" name="text" />
-      <div>
-        {user ? (
-          <>
-            <Link to="/addPost">Add Post</Link>
-            <br />
-            <Link to="/profile">{user.user.name}</Link>
-            <br />
-            <Link to="/" onClick={onLogout}>
-              Logout
-            </Link>
-            <br />
-            {user.user.role === "admin" ? <Link to="/admin">Admin</Link> : ""}
-          </>
-        ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <br />
-            <Link to="/register">Register</Link>
-          </>
-        )}
-      </div>
-    </nav>
+    <div className="header">
+      <nav>
+        <Link to="/">Home</Link>
+        <br />
+        <input onKeyUp={handleChange} placeholder="search post" name="text" />
+        <div>
+          {user ? (
+            <>
+              <Link to="/addPost">Add Post</Link>
+              <br />
+              <Link to="/profile">{user.user.name}</Link>
+              <br />
+              <Link to="/" onClick={onLogout}>
+                Logout
+              </Link>
+              <br />
+              {user.user.role === "admin" ? <Link to="/admin">Admin</Link> : ""}
+            </>
+          ) : (
+            <>
+              <Link to="/login">Login</Link>
+              <br />
+              <Link to="/register">Register</Link>
+            </>
+          )}
+        </div>
+      </nav>
+    </div>
   );
 };
 
