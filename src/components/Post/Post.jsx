@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { like, dislike } from "../../features/posts/postsSlice";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
-import { Card } from "antd";
+import { Avatar, Card } from "antd";
 import "./Post.scss";
+import { CommentOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
 
@@ -12,31 +13,18 @@ const Post = () => {
   const { posts } = useSelector((state) => state.posts);
   const { user } = useSelector((state) => state.auth);
 
+ 
+
   const dispatch = useDispatch();
 
   const post = posts?.map((post) => {
     const isAlreadyLiked = post.likes_post?.includes(user?.user._id);
-
-    const likes = () => {
-      return (
-        <>
-          <span className="like">Likes: {post.likes_post?.length} </span>
-          {isAlreadyLiked ? (
-            <HeartFilled onClick={() => dispatch(dislike(post._id))} />
-          ) : (
-            <HeartOutlined onClick={() => dispatch(like(post._id))} />
-          )}
-        </>
-      );
-    };
-
+    console.log(post)
     return (
       <div key={post._id}>
         <Card
           hoverable
-          style={{
-            width: 340,
-          }}
+          style={{ width: 340 }}
           cover={
             <Link to={"/post/" + post._id}>
               <img
@@ -46,14 +34,24 @@ const Post = () => {
               />
             </Link>
           }
+          actions={[
+            <>
+              {isAlreadyLiked ? (
+                <HeartFilled onClick={() => dispatch(dislike(post._id))} />
+              ) : (
+                <HeartOutlined onClick={() => dispatch(like(post._id))} />
+              )}
+            </>,
+            <CommentOutlined />,
+          ]}
         >
-          <Meta title={post.title} description={likes} />
-          <span className="like">Likes: {post.likes_post?.length} </span>
-          {isAlreadyLiked ? (
-            <HeartFilled onClick={() => dispatch(dislike(post._id))} />
-          ) : (
-            <HeartOutlined onClick={() => dispatch(like(post._id))} />
-          )}
+          <Meta
+            avatar={<Avatar src={user.user.image} />}
+            title={post.title}
+            description=<div className="like">
+              {post.likes_post?.length} Grateful people
+            </div>
+          />
         </Card>
       </div>
     );

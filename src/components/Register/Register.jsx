@@ -5,21 +5,23 @@ import { notification } from "antd";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [formData, setFormData] = useState({
+  const initialState = {
     name: "",
     email: "",
     password: "",
     password2: "",
     age: 0,
-    image: "",
-  });
+    imageUser: "",
+  };
 
-  const { name, email, password, password2, age, image } = formData;
+  const [formData, setFormData] = useState(initialState);
+
+  const { name, email, password, password2, age, imageUser } = formData;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isSuccess, message, isError } = useSelector((state) => state.auth);
+  const { isSuccess, isError, message } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (isSuccess) {
@@ -27,12 +29,10 @@ const Register = () => {
         message: `Welcome! ${name}`,
         description: "Successfully registered",
       });
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
+      navigate("/login");
     }
     if (isError) {
-      notification.error({ message: "Error", description: message });
+      notification.error({ message: "Error register", description: message });
     }
     dispatch(reset());
     // eslint-disable-next-line
@@ -48,12 +48,20 @@ const Register = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (password !== password2) {
-      return notification.error({
+      notification.error({
         message: "Error",
         description: "Passwords do not match",
       });
     } else {
+      const formData = new FormData();
+      if (e.target.imageUser.files[0])
+        formData.set("imageUser", e.target.imageUser.files[0]);
+      formData.set("name", e.target.name.value);
+      formData.set("email", e.target.email.value);
+      formData.set("password", e.target.password.value);
+      formData.set("age", e.target.age.value);
       dispatch(register(formData));
+      setFormData(initialState);
     }
   };
 
@@ -90,7 +98,12 @@ const Register = () => {
           onChange={onChange}
         />
         <input type="number" name="age" value={age} onChange={onChange} />
-        <input type="file" name="image" value={image} onChange={onChange} />
+        <input
+          type="file"
+          name="imageUser"
+          value={imageUser}
+          onChange={onChange}
+        />
 
         <button type="submit">Register</button>
       </form>

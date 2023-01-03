@@ -1,3 +1,4 @@
+import { Spin } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts, reset } from "../../features/posts/postsSlice";
@@ -19,7 +20,11 @@ const Admin = () => {
   }, []);
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="spiner">
+        <Spin size="large" />
+      </div>
+    );
   }
 
   return (

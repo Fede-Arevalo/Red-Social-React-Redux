@@ -1,3 +1,4 @@
+import { Spin } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -16,7 +17,11 @@ const PostDetail = () => {
   }, []);
 
   if (!post.commentIds) {
-    return <h1>cargando...</h1>;
+    return (
+      <div className="spiner">
+        <Spin size="large" />
+      </div>
+    );
   }
 
   const comments = post.commentIds.map((comment) => {
@@ -37,7 +42,9 @@ const PostDetail = () => {
       />
       <h1>{post.title}</h1>
       <p>{post.body}</p>
-      <button onClick={() => navigate(`/addComment/${_id}`)}>Add Comment</button>
+      <button onClick={() => navigate(`/addComment/${_id}`)}>
+        Add Comment
+      </button>
       {comments}
     </div>
   );

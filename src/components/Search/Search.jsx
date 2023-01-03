@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getPostByName } from "../../features/posts/postsSlice";
-import Post from "../Post/Post"
+import Post from "../Post/Post";
 
 const Search = () => {
   const { postName } = useParams();
