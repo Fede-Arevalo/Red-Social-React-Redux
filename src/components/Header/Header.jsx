@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
-import "./Header.scss"
+import "./Header.scss";
+import { Input } from "antd";
+
+const { Search } = Input;
 
 const Header = () => {
+  const { user } = useSelector((state) => state.auth);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const { user } = useSelector((state) => state.auth);
 
   const [text, setText] = useState("");
 
@@ -28,9 +31,13 @@ const Header = () => {
   return (
     <div className="header">
       <nav>
-        <Link to="/">Home</Link>
-        <br />
-        <input onKeyUp={handleChange} placeholder="search post" name="text" />
+        <Search
+          placeholder="search post"
+          onKeyUp={handleChange}
+          style={{
+            width: 200,
+          }}
+        />
         <div>
           {user ? (
             <>
@@ -46,9 +53,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link to="/login">Login</Link>
-              <br />
-              <Link to="/register">Register</Link>
+              <Link to="/register"></Link>
             </>
           )}
         </div>

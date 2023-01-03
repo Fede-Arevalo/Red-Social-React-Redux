@@ -18,9 +18,9 @@ const Login = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      notification.success({ message: "Success", description: message });
+      notification.success({ message: "Login Success!", description: message });
       setTimeout(() => {
-        navigate("/profile");
+        navigate("/");
       }, 2000);
     }
 

@@ -6,7 +6,6 @@ import Post from "../Post/Post";
 
 const Search = () => {
   const { postName } = useParams();
-
   const dispatch = useDispatch();
 
   useEffect(() => {

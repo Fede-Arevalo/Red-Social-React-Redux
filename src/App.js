@@ -29,8 +29,8 @@ function App() {
           <Route path="/addPost" element={<AddPost />} />
           <Route path="/addComment/:_id" element={<AddComment />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </div>
   );
 }
