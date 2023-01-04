@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, reset } from "../../features/auth/authSlice";
 import { notification } from "antd";
+import "./Login.scss"
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -44,7 +45,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div className="login">
       <h1>Login</h1>
       <form onSubmit={onSubmit}>
         <input
@@ -63,7 +64,7 @@ const Login = () => {
         />
         <button type="submit">Login</button>
       </form>
-    </>
+    </div>
   );
 };
 

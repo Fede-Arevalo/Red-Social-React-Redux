@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getPostByName } from "../../features/posts/postsSlice";
 import Post from "../Post/Post";
+import "./Search.scss"
 
 const Search = () => {
   const { postName } = useParams();
@@ -14,7 +15,7 @@ const Search = () => {
   }, [postName]);
 
   return (
-    <div>
+    <div className="search">
       <Post />
     </div>
   );
