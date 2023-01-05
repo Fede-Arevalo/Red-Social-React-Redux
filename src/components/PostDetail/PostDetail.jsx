@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getPostById } from "../../features/posts/postsSlice";
+import "./PostDetail.scss"
 
 const PostDetail = () => {
   const { _id } = useParams();
@@ -33,12 +34,12 @@ const PostDetail = () => {
   });
 
   return (
-    <div>
+    <div className="postDetail">
       <h1>PostDetail</h1>
       <img
         src={"http://localhost:8080/" + post.image}
         alt={post.title}
-        width="490px"
+        width="100%"
       />
       <h1>{post.title}</h1>
       <p>{post.body}</p>

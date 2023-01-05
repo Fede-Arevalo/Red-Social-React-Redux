@@ -55,12 +55,14 @@ const Post = () => {
           ]}
         >
           <Meta
-            // avatar={<Avatar src={`http://localhost:8080/${user.user.image}`} />}
-            title={post.title}
-            description=<div className="like">
-              <strong>{post.likes_post?.length} Grateful people</strong>
-              <span> | {post.commentIds?.length} Comments</span>
-            </div>
+          //  <img className="postProfileImg" src={Users.filter((u) => u.id === post?.userId)[0].profilePicture} alt="" />
+          // avatar= {<Avatar src={`http://localhost:8080/${user.user.image}`} />}
+          title={post.title}
+          description=
+          <div className="like">
+            <strong>{post.likes_post?.length} Grateful people</strong>
+            <span> | {post.commentIds?.length} Comments</span>
+          </div>
           />
         </Card>
       </div>

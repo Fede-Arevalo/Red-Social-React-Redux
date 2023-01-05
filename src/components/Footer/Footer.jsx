@@ -5,12 +5,12 @@ import {
   UserOutlined,
   HomeOutlined,
   PlusSquareOutlined,
+  DeleteOutlined,
 } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 
 const Footer = () => {
   const { user } = useSelector((state) => state.auth);
-
   return (
     <div className="footer">
       <nav>
@@ -26,8 +26,13 @@ const Footer = () => {
               <Link to="/profile">
                 <UserOutlined />
               </Link>
-
-              {user.user.role === "admin" ? <Link to="/admin">Admin</Link> : ""}
+              {user.user.role === "admin" ? (
+                <Link to="/admin">
+                  <DeleteOutlined />
+                </Link>
+              ) : (
+                ""
+              )}
             </>
           ) : (
             <>

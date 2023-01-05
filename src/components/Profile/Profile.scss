@@ -1,0 +1,19 @@
+.profile {
+  margin-top: 6em;
+  margin-bottom: 6em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  .user {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+    .logout-profile {
+      width: 80px;
+    }
+  }
+}

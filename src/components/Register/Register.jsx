@@ -67,7 +67,7 @@ const Register = () => {
 
   return (
     <>
-      <h1>Register</h1>
+      <h1>Sign up to find where to eat Gluten free!</h1>
       <form onSubmit={onSubmit}>
         <input
           type="text"
@@ -106,6 +106,8 @@ const Register = () => {
         />
 
         <button type="submit">Register</button>
+
+        <p>You have an account? Log in</p>
       </form>
     </>
   );

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, reset } from "../../features/auth/authSlice";
-import { notification } from "antd";
-import "./Login.scss"
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { notification, Button, Form, Input } from "antd";
+import "./Login.scss";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -39,15 +40,19 @@ const Login = () => {
     }));
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    dispatch(login(formData));
+  // const onSubmit = (e) => {
+  //   console.log(e);
+  //   e.preventDefault();
+  //   dispatch(login(formData));
+  // };
+
+  const onFinish = () => {
+    dispatch(login(formData))
   };
 
   return (
     <div className="login">
-      <h1>Login</h1>
-      <form onSubmit={onSubmit}>
+      {/* <form onSubmit={onSubmit}>
         <input
           type="email"
           name="email"
@@ -63,7 +68,66 @@ const Login = () => {
           onChange={onChange}
         />
         <button type="submit">Login</button>
-      </form>
+      </form> */}
+
+      <Form
+        name="normal_login"
+        className="login-form"
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
+      >
+        <Form.Item
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: "Please input your email!",
+            },
+          ]}
+        >
+          <Input
+            prefix={<UserOutlined className="site-form-item-icon" />}
+            type="email"
+            name="email"
+            value={email}
+            placeholder="email"
+            onChange={onChange}
+          />
+        </Form.Item>
+        <Form.Item
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: "Please input your Password!",
+            },
+          ]}
+        >
+          <Input
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            type="password"
+            name="password"
+            value={password}
+            placeholder="password"
+            onChange={onChange}
+          />
+        </Form.Item>
+        <Form.Item>
+          <Button
+            type="primary"
+            block
+            htmlType="submit"
+            className="login-form-button"
+          >
+            Log in
+          </Button>
+        </Form.Item>
+        <p>
+          You don't have an account? <a href="/register">Sign up!</a>
+        </p>
+      </Form>
     </div>
   );
 };
