@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login, reset } from "../../features/auth/authSlice";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { notification, Button, Form, Input } from "antd";
+import Logo from "../../assets/isologo-g-free.png";
 import "./Login.scss";
 
 const Login = () => {
@@ -27,7 +28,10 @@ const Login = () => {
     }
 
     if (isError) {
-      notification.error({ message: "Wrong email or password", description: message });
+      notification.error({
+        message: "Wrong email or password",
+        description: message,
+      });
     }
     dispatch(reset());
     // eslint-disable-next-line
@@ -46,6 +50,7 @@ const Login = () => {
 
   return (
     <div className="login">
+      <img src={Logo} alt="Logo-G-free" className="logo" />
       <Form
         name="normal_login"
         className="login-form"
@@ -101,9 +106,9 @@ const Login = () => {
             Log in
           </Button>
         </Form.Item>
-        <p>You don't have an account?</p>
-        <a href="/register">Sign up!</a>
       </Form>
+      <p>You don't have an account?</p>
+      <Link to="/register"><span>Sign up!</span></Link>
     </div>
   );
 };

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { register, reset } from "../../features/auth/authSlice";
 import { notification } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "../../assets/isologo-g-free.png";
 import "./Register.scss";
 
 const Register = () => {
@@ -68,7 +69,8 @@ const Register = () => {
 
   return (
     <div className="register">
-      <form onSubmit={onSubmit}>
+      <img src={Logo} alt="Logo-G-free" className="logo" />
+      <form className="register-form" onSubmit={onSubmit}>
         <input
           type="text"
           name="name"
@@ -76,7 +78,6 @@ const Register = () => {
           placeholder="Name"
           onChange={onChange}
         />
-        <br />
         <input
           type="email"
           name="email"
@@ -84,9 +85,8 @@ const Register = () => {
           placeholder="E-mail"
           onChange={onChange}
         />
-        <br />
         <input type="number" name="age" value={age} onChange={onChange} />
-        <br />
+
         <input
           type="password"
           name="password"
@@ -94,7 +94,6 @@ const Register = () => {
           placeholder="Password"
           onChange={onChange}
         />
-        <br />
         <input
           type="password"
           name="password2"
@@ -102,16 +101,20 @@ const Register = () => {
           placeholder="Confirm password"
           onChange={onChange}
         />
-        <br />
         <input
           type="file"
           name="imageUser"
           value={imageUser}
           onChange={onChange}
         />
-        <br />
+
         <button type="submit">Register</button>
       </form>
+
+      <p>You have an account?</p>
+      <Link to="/login">
+        <span>Log in!</span>
+      </Link>
     </div>
   );
 };
