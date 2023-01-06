@@ -7,7 +7,6 @@ import "./Profile.scss";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
-  
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -20,8 +19,14 @@ const Profile = () => {
   return (
     <div className="profile">
       <div className="user">
-        <Avatar size={80} src={"http://localhost:8080/" + user.user.image} />
+        <Link to={"/UpdateUser/" + user.user._id}>
+          <Avatar
+            size={80}
+            src={"http://localhost:8080/" + user.user.imageUser}
+          />
+        </Link>
         <p>{user.user.name}</p>
+        <p>{user.user.age}</p>
         <p>{user.user.email}</p>
         <Link to="/" onClick={onLogout}>
           <Button type="primary" block className="logout-profile">

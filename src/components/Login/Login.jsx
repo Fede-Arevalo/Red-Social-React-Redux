@@ -27,7 +27,7 @@ const Login = () => {
     }
 
     if (isError) {
-      notification.error({ message: "Error", description: message });
+      notification.error({ message: "Wrong email or password", description: message });
     }
     dispatch(reset());
     // eslint-disable-next-line
@@ -40,36 +40,12 @@ const Login = () => {
     }));
   };
 
-  // const onSubmit = (e) => {
-  //   console.log(e);
-  //   e.preventDefault();
-  //   dispatch(login(formData));
-  // };
-
   const onFinish = () => {
-    dispatch(login(formData))
+    dispatch(login(formData));
   };
 
   return (
     <div className="login">
-      {/* <form onSubmit={onSubmit}>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          placeholder="email"
-          onChange={onChange}
-        />
-        <input
-          type="password"
-          name="password"
-          value={password}
-          placeholder="password"
-          onChange={onChange}
-        />
-        <button type="submit">Login</button>
-      </form> */}
-
       <Form
         name="normal_login"
         className="login-form"
@@ -96,6 +72,7 @@ const Login = () => {
             onChange={onChange}
           />
         </Form.Item>
+
         <Form.Item
           name="password"
           rules={[
@@ -124,9 +101,8 @@ const Login = () => {
             Log in
           </Button>
         </Form.Item>
-        <p>
-          You don't have an account? <a href="/register">Sign up!</a>
-        </p>
+        <p>You don't have an account?</p>
+        <a href="/register">Sign up!</a>
       </Form>
     </div>
   );

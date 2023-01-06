@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { register, reset } from "../../features/auth/authSlice";
 import { notification } from "antd";
 import { useNavigate } from "react-router-dom";
+import "./Register.scss";
 
 const Register = () => {
   const initialState = {
@@ -66,50 +67,52 @@ const Register = () => {
   };
 
   return (
-    <>
-      <h1>Sign up to find where to eat Gluten free!</h1>
+    <div className="register">
       <form onSubmit={onSubmit}>
         <input
           type="text"
           name="name"
           value={name}
-          placeholder="name"
+          placeholder="Name"
           onChange={onChange}
         />
+        <br />
         <input
           type="email"
           name="email"
           value={email}
-          placeholder="email"
+          placeholder="E-mail"
           onChange={onChange}
         />
+        <br />
+        <input type="number" name="age" value={age} onChange={onChange} />
+        <br />
         <input
           type="password"
           name="password"
           value={password}
-          placeholder="password"
+          placeholder="Password"
           onChange={onChange}
         />
+        <br />
         <input
           type="password"
           name="password2"
           value={password2}
-          placeholder="repeat password"
+          placeholder="Confirm password"
           onChange={onChange}
         />
-        <input type="number" name="age" value={age} onChange={onChange} />
+        <br />
         <input
           type="file"
           name="imageUser"
           value={imageUser}
           onChange={onChange}
         />
-
+        <br />
         <button type="submit">Register</button>
-
-        <p>You have an account? Log in</p>
       </form>
-    </>
+    </div>
   );
 };
 

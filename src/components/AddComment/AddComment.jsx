@@ -12,7 +12,6 @@ const AddComment = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     const formData = new FormData();
     if (e.target.imageComment.files[0])
       formData.set("image", e.target.imageComment.files[0]);
@@ -27,6 +26,7 @@ const AddComment = () => {
       navigate("/post/" + _id);
     }, 500);
 
+    // console.log(myObj)
     // console.log(Object.fromEntries(formData))
   };
 

@@ -5,9 +5,11 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   user: user ? user : null,
+  userUpdated: {},
   isError: false,
   isSuccess: false,
   message: "",
+  isLoading: false,
 };
 
 export const register = createAsyncThunk(
@@ -39,6 +41,44 @@ export const logout = createAsyncThunk("auth/logout", async () => {
   }
 });
 
+export const getAllUsers = createAsyncThunk("auth/getAllUsers", async () => {
+  try {
+    return await authService.getAllUsers();
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+export const loggedIn = createAsyncThunk("auth/loggedIn", async () => {
+  try {
+    return await authService.loggedIn();
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+export const deleteUserById = createAsyncThunk(
+  "auth/deleteUserById",
+  async (_id) => {
+    try {
+      return await authService.deleteUserById(_id);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
+export const updateUserById = createAsyncThunk(
+  "auth/updateUserById",
+  async (myObj) => {
+    try {
+      return await authService.updateUserById(myObj);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -48,9 +88,21 @@ export const authSlice = createSlice({
       state.isSuccess = false;
       state.message = "";
     },
+    resetPassword: (state) => {
+      state.user.password = "";
+    },
   },
   extraReducers: (builder) => {
     builder
+      .addCase(register.fulfilled, (state, action) => {
+        state.isSuccess = true;
+        state.message = action.payload.message;
+      })
+
+      .addCase(register.rejected, (state, action) => {
+        state.isError = true;
+        state.message = action.payload;
+      })
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isSuccess = true;
@@ -66,18 +118,33 @@ export const authSlice = createSlice({
         state.user = null;
       })
 
-      .addCase(register.fulfilled, (state, action) => {
+      .addCase(getAllUsers.fulfilled, (state, action) => {
+        state.users = action.payload;
+      })
+
+      .addCase(getAllUsers.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(loggedIn.fulfilled, (state, action) => {
+        state.userInfo = action.payload;
+      })
+
+      .addCase(deleteUserById.fulfilled, (state, action) => {
+        state.users = state.users.filter(
+          (user) => user._id !== action.payload.user._id
+        );
         state.isSuccess = true;
         state.message = action.payload.message;
       })
 
-      .addCase(register.rejected, (state, action) => {
-        state.isError = true;
-        state.message = action.payload;
+      .addCase(updateUserById.fulfilled, (state, action) => {
+        state.user = action.payload;
+        console.log(action.payload)
       });
   },
 });
 
-export const { reset } = authSlice.actions;
+export const { reset, resetPassword } = authSlice.actions;
 
 export default authSlice.reducer;

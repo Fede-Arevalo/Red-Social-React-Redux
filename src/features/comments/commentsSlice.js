@@ -8,7 +8,6 @@ const initialState = {
 export const createComment = createAsyncThunk(
   "comments/createComment",
   async (myObj) => {
-    
     try {
       return await commentsService.createComment(myObj);
     } catch (error) {
@@ -22,8 +21,7 @@ export const commentsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder
-    .addCase(createComment.fulfilled, (state, action) => {
+    builder.addCase(createComment.fulfilled, (state, action) => {
       state.comments = action.payload;
     });
   },

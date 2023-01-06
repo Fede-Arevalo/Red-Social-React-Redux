@@ -12,6 +12,7 @@ import Admin from "./components/Admin/Admin";
 import AddPost from "./components/AddPost/AddPost";
 import AddComment from "./components/AddComment/AddComment";
 import Footer from "./components/Footer/Footer";
+import UpdateUser from "./components/UpdateUser/UpdateUser";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/addPost" element={<AddPost />} />
           <Route path="/addComment/:_id" element={<AddComment />} />
+          <Route path="/UpdateUser/:_id" element={<UpdateUser />} />
         </Routes>
         <Footer />
       </BrowserRouter>
