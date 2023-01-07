@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { register, reset } from "../../features/auth/authSlice";
-import { notification } from "antd";
+import { Button, notification } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/isologo-g-free.png";
 import "./Register.scss";
@@ -109,6 +109,15 @@ const Register = () => {
         />
 
         <button type="submit">Register</button>
+
+        <Button
+            type="primary"
+            block
+            htmlType="submit"
+            className="register-form-button"
+          >
+            Register
+          </Button>
       </form>
 
       <p>You have an account?</p>
