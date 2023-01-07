@@ -35,7 +35,6 @@ const PostDetail = () => {
 
   return (
     <div className="postDetail">
-      <h1>PostDetail</h1>
       <img
         src={"http://localhost:8080/" + post.image}
         alt={post.title}

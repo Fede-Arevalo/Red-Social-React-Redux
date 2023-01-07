@@ -7,7 +7,6 @@ import { Spin } from "antd";
 
 const Posts = () => {
   const { isLoading } = useSelector((state) => state.posts);
-
   const dispatch = useDispatch();
 
   // Función para evitar warning en useEffect

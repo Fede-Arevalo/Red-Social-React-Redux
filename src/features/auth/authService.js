@@ -40,6 +40,11 @@ const deleteUserById = async (_id) => {
   return res.data;
 };
 
+const getAllUsers = async () => {
+  const res = await axios.get(API_URL + "/users/getAllUsers");
+  return res.data;
+};
+
 const loggedIn = async () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const res = await axios.get(API_URL + "/users/loggedIn", {
@@ -75,6 +80,7 @@ const authService = {
   deleteUserById,
   loggedIn,
   updateUserById,
+  getAllUsers,
 };
 
 export default authService;

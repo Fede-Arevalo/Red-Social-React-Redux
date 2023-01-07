@@ -3,8 +3,8 @@ import postsService from "./postsService";
 
 const initialState = {
   posts: [],
-  isLoading: false,
   post: {},
+  isLoading: false,
 };
 
 export const createPost = createAsyncThunk(
