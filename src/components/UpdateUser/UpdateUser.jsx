@@ -1,7 +1,9 @@
+import { Button } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { resetPassword, updateUserById } from "../../features/auth/authSlice";
+import { loggedIn, resetPassword, updateUserById } from "../../features/auth/authSlice";
+import { CloudUploadOutlined } from "@ant-design/icons";
 import "./UpdateUser.scss";
 
 const UpdateUser = () => {
@@ -14,12 +16,11 @@ const UpdateUser = () => {
     name: `${user.user.name}`,
     email: `${user.user.email}`,
     password: "",
-    age: `${user.user.age}`,
     imageUser: "",
   };
 
   const [formData, setFormData] = useState(initialState);
-  const { name, email, password, age, imageUser } = formData;
+  const { name, email, password, imageUser } = formData;
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +30,6 @@ const UpdateUser = () => {
     editedData.set("name", e.target.name.value);
     editedData.set("email", e.target.email.value);
     editedData.set("password", e.target.password.value);
-    editedData.set("age", e.target.age.value);
     const myObj = { editedData, _id };
     dispatch(updateUserById(myObj));
     navigate("/profile");
@@ -44,13 +44,14 @@ const UpdateUser = () => {
 
   useEffect(() => {
     setFormData(user);
+    dispatch(loggedIn());
     dispatch(resetPassword());
     // eslint-disable-next-line
   }, [user]);
 
   return (
-    <div className="register">
-      <form onSubmit={onSubmit}>
+    <div className="updateUser">
+      <form className="updateUser-form" onSubmit={onSubmit}>
         <input
           type="text"
           name="name"
@@ -58,7 +59,6 @@ const UpdateUser = () => {
           placeholder="name"
           onChange={onChange}
         />
-        <br />
         <input
           type="email"
           name="email"
@@ -66,9 +66,16 @@ const UpdateUser = () => {
           placeholder="email"
           onChange={onChange}
         />
-        <br />
-        <input type="number" name="age" value={age} onChange={onChange} />
-        <br />
+        <div className="custom-input-file">
+          <input
+            className="input-file"
+            type="file"
+            name="imageUser"
+            value={imageUser || ""}
+            onChange={onChange}
+          />
+          <CloudUploadOutlined /> Image User
+        </div>
         <input
           type="password"
           name="password"
@@ -77,15 +84,14 @@ const UpdateUser = () => {
           onChange={onChange}
           required
         />
-        <br />
-        <input
-          type="file"
-          name="imageUser"
-          value={imageUser || ""}
-          onChange={onChange}
-        />
-        <br />
-        <button type="submit">Update</button>
+        <Button
+          type="primary"
+          block
+          htmlType="submit"
+          className="register-form-button"
+        >
+          Update
+        </Button>
       </form>
     </div>
   );

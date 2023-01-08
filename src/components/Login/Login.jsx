@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login, reset } from "../../features/auth/authSlice";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { notification, Button, Form, Input } from "antd";
-import Logo from "../../assets/isologo-g-free.png";
+import Logo from "../../assets/isologo-g-free-celeste.png";
 import "./Login.scss";
 
 const Login = () => {

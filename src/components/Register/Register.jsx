@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { register, reset } from "../../features/auth/authSlice";
+import Logo from "../../assets/isologo-g-free-celeste.png";
 import { Button, notification } from "antd";
-import { Link, useNavigate } from "react-router-dom";
-import Logo from "../../assets/isologo-g-free.png";
+import { CloudUploadOutlined } from "@ant-design/icons";
 import "./Register.scss";
 
 const Register = () => {
@@ -12,13 +13,12 @@ const Register = () => {
     email: "",
     password: "",
     password2: "",
-    age: 0,
     imageUser: "",
   };
 
   const [formData, setFormData] = useState(initialState);
 
-  const { name, email, password, password2, age, imageUser } = formData;
+  const { name, email, password, password2, imageUser } = formData;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -60,8 +60,7 @@ const Register = () => {
         formData.set("imageUser", e.target.imageUser.files[0]);
       formData.set("name", e.target.name.value);
       formData.set("email", e.target.email.value);
-      formData.set("password", e.target.password.value);
-      formData.set("age", e.target.age.value);
+      formData.set("password", e.target.password.value);      
       dispatch(register(formData));
       setFormData(initialState);
     }
@@ -77,6 +76,7 @@ const Register = () => {
           value={name}
           placeholder="Name"
           onChange={onChange}
+          required
         />
         <input
           type="email"
@@ -84,8 +84,8 @@ const Register = () => {
           value={email}
           placeholder="E-mail"
           onChange={onChange}
+          required
         />
-        <input type="number" name="age" value={age} onChange={onChange} />
 
         <input
           type="password"
@@ -93,6 +93,7 @@ const Register = () => {
           value={password}
           placeholder="Password"
           onChange={onChange}
+          required
         />
         <input
           type="password"
@@ -100,24 +101,26 @@ const Register = () => {
           value={password2}
           placeholder="Confirm password"
           onChange={onChange}
+          required
         />
-        <input
-          type="file"
-          name="imageUser"
-          value={imageUser}
-          onChange={onChange}
-        />
-
-        <button type="submit">Register</button>
-
+        <div className="custom-input-file">
+          <input
+            className="input-file"
+            type="file"
+            name="imageUser"
+            value={imageUser}
+            onChange={onChange}
+          />
+          <CloudUploadOutlined /> Image User
+        </div>
         <Button
-            type="primary"
-            block
-            htmlType="submit"
-            className="register-form-button"
-          >
-            Register
-          </Button>
+          type="primary"
+          block
+          htmlType="submit"
+          className="register-form-button"
+        >
+          Register
+        </Button>
       </form>
 
       <p>You have an account?</p>

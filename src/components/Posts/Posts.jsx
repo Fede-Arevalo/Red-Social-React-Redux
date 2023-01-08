@@ -12,6 +12,7 @@ const Posts = () => {
   // Función para evitar warning en useEffect
   async function getAllPostsAndReset() {
     await dispatch(getAllPosts());
+
     dispatch(reset());
   }
 

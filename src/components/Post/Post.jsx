@@ -1,4 +1,3 @@
-/* eslint-disable react/style-prop-object */
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,13 +7,13 @@ import {
   HeartTwoTone,
   CommentOutlined,
 } from "@ant-design/icons";
-import { Card } from "antd";
+import { Avatar, Card } from "antd";
 import "./Post.scss";
 
 const Post = () => {
   const { posts } = useSelector((state) => state.posts);
   const { user } = useSelector((state) => state.auth);
-  const { Meta } = Card;
+  const { Meta } = Card;  
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -53,8 +52,13 @@ const Post = () => {
           ]}
         >
           <Meta
-            //  <img className="postProfileImg" src={Users.filter((u) => u.id === post?.userId)[0].profilePicture} alt="" />
-            // avatar= {<Avatar src={`http://localhost:8080/${user.user.image}`} />}
+            avatar={
+              <Avatar
+                size={40}
+                src={"http://localhost:8080/" + post.userId?.imageUser}
+                alt={post.userId?.name}
+              />
+            }
             title={post.title}
             description=<div className="like">
               <strong>{post.likes_post?.length} Grateful people</strong>

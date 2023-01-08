@@ -11,7 +11,7 @@ import {
   EditOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { Avatar, Divider, Spin, Dropdown, message, Space } from "antd";
+import { Avatar, Divider, Spin, Dropdown, Space } from "antd";
 import "./UserInfo.scss";
 import { logout } from "../../../features/auth/authSlice";
 
