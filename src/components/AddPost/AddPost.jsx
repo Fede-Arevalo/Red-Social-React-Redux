@@ -16,9 +16,7 @@ const AddPost = () => {
         message: "Post added",
         description: "Successfully posted",
       });
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
+      navigate("/");
     }
     if (isError) {
       notification.error({ message: "Error", description: message });

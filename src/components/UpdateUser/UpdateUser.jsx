@@ -71,7 +71,7 @@ const UpdateUser = () => {
             className="input-file"
             type="file"
             name="imageUser"
-            value={imageUser || ""}
+            value={imageUser}
             onChange={onChange}
           />
           <CloudUploadOutlined /> Image User

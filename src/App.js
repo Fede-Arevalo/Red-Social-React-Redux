@@ -13,6 +13,8 @@ import AddPost from "./components/AddPost/AddPost";
 import AddComment from "./components/AddComment/AddComment";
 import Footer from "./components/Footer/Footer";
 import UpdateUser from "./components/UpdateUser/UpdateUser";
+import UpdatePost from "./components/UpdatePost/UpdatePost";
+
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
           <Route path="/addPost" element={<AddPost />} />
           <Route path="/addComment/:_id" element={<AddComment />} />
           <Route path="/UpdateUser/:_id" element={<UpdateUser />} />
+          <Route path="/UpdatePost/:_id" element={<UpdatePost />} />
         </Routes>
         <Footer />
       </BrowserRouter>

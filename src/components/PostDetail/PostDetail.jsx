@@ -1,8 +1,9 @@
 import { Avatar, Spin } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { getPostById } from "../../features/posts/postsSlice";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { deletePost, getPostById } from "../../features/posts/postsSlice";
+import { EditOutlined } from "@ant-design/icons";
 import "./PostDetail.scss";
 
 const PostDetail = () => {
@@ -33,6 +34,11 @@ const PostDetail = () => {
     );
   });
 
+  function deleter() {
+    dispatch(deletePost(post._id));
+    navigate("/");
+  }
+
   return (
     <div className="postDetail">
       <div className="user">
@@ -54,6 +60,10 @@ const PostDetail = () => {
         <button onClick={() => navigate(`/addComment/${_id}`)}>
           Add Comment
         </button>
+        <button onClick={() => deleter()}>Delete</button>
+        <Link to={"/UpdatePost/" + _id}>
+          <EditOutlined /> Edit Post
+        </Link>
       </div>
       <div className="body">
         <h1>{post.title}</h1>

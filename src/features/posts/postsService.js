@@ -27,6 +27,18 @@ const getPostByName = async (postTitle) => {
   return res.data;
 };
 
+
+const updatePostById = async (data) => {
+  console.log(data)
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.put(API_URL + "/posts/updatePostById/" + data._id, data, {
+    headers: {
+      authorization: user?.token,
+    },
+  });
+  return res.data;
+};
+
 const deletePost = async (_id) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const res = await axios.delete(API_URL + "/posts/deletePostById/" + _id, {
@@ -82,6 +94,7 @@ const postsService = {
   getPostByName,
   deletePost,
   deletePostAdmin,
+  updatePostById,
   like,
   dislike,
 };

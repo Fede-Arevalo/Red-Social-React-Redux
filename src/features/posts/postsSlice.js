@@ -48,6 +48,18 @@ export const getPostByName = createAsyncThunk(
   }
 );
 
+
+export const updatePostById = createAsyncThunk(
+  "posts/updatePostById",
+  async (_id) => {
+    try {
+      return await postsService.updatePostById(_id);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
 export const deletePost = createAsyncThunk("posts/deletePost", async (_id) => {
   try {
     return await postsService.deletePost(_id);
@@ -117,6 +129,10 @@ export const postsSlice = createSlice({
         state.posts = state.posts.filter(
           (post) => post._id !== action.payload.post._id
         );
+      })
+
+      .addCase(updatePostById.fulfilled, (state, action) => {
+        state.post = action.payload.post;
       })
 
       .addCase(deletePostAdmin.fulfilled, (state, action) => {

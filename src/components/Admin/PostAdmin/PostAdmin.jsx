@@ -17,7 +17,7 @@ const PostAdmin = () => {
           width="90px"
         />
         <br />
-        <button onClick={() => dispatch(deletePostAdmin(post._id))}>X</button>
+        <button onClick={() => dispatch(deletePostAdmin(post._id))}>Delete</button>
       </div>
     );
   });
