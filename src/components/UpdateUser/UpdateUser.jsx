@@ -11,7 +11,8 @@ const UpdateUser = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const { _id } = useParams();
-
+  
+  console.log(user)
   const initialState = {
     name: `${user.user.name}`,
     email: `${user.user.email}`,
@@ -43,11 +44,11 @@ const UpdateUser = () => {
   };
 
   useEffect(() => {
-    setFormData(user);
+    // setFormData(user);
     dispatch(loggedIn());
     dispatch(resetPassword());
     // eslint-disable-next-line
-  }, [user]);
+  }, []);
 
   return (
     <div className="updateUser">

@@ -2,8 +2,10 @@ import { Button } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { getPostById, updatePostById, deletePost } from "../../features/posts/postsSlice";
+import { DeleteOutlined } from "@ant-design/icons";
 import "./UpdatePost.scss";
-import { getPostById, updatePostById } from "../../features/posts/postsSlice";
+
 
 const UpdateUser = () => {
   const { _id } = useParams();
@@ -43,6 +45,11 @@ const UpdateUser = () => {
     // eslint-disable-next-line
   }, []);
 
+  function deleter() {
+    dispatch(deletePost(post._id));
+    navigate("/");
+  }
+
   return (
     <div className="updatePost">
       <form className="updateUser-form" onSubmit={onSubmit}>
@@ -67,6 +74,7 @@ const UpdateUser = () => {
           Update
         </Button>
       </form>
+      <Button className="delete" onClick={() => deleter()}><DeleteOutlined />Delete</Button>
     </div>
   );
 };
