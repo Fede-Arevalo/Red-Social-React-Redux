@@ -1,9 +1,9 @@
-import { Spin } from "antd";
+import { Avatar, Spin } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getPostById } from "../../features/posts/postsSlice";
-import "./PostDetail.scss"
+import "./PostDetail.scss";
 
 const PostDetail = () => {
   const { _id } = useParams();
@@ -35,16 +35,31 @@ const PostDetail = () => {
 
   return (
     <div className="postDetail">
-      <img
-        src={"http://localhost:8080/" + post.image}
-        alt={post.title}
-        width="100%"
-      />
-      <h1>{post.title}</h1>
-      <p>{post.body}</p>
-      <button onClick={() => navigate(`/addComment/${_id}`)}>
-        Add Comment
-      </button>
+      <div className="user">
+        <Avatar
+          size={35}
+          src={"http://localhost:8080/" + post.userId?.imageUser}
+          alt={post.userId?.name}
+        />
+        <p>{post.userId?.name}</p>
+      </div>
+      <div className="imagePost">
+        <img
+          src={"http://localhost:8080/" + post.image}
+          alt={post.title}
+          width="100%"
+        />
+      </div>
+      <div className="icons">
+        <button onClick={() => navigate(`/addComment/${_id}`)}>
+          Add Comment
+        </button>
+      </div>
+      <div className="body">
+        <h1>{post.title}</h1>
+        <p>{post.body}</p>
+      </div>
+      <h2>Comments</h2>
       {comments}
     </div>
   );

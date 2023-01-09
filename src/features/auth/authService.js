@@ -67,9 +67,6 @@ const updateUserById = async (myObj) => {
       },
     }
   );
-  if (res.data) {
-    localStorage.setItem("user", JSON.stringify(res.data));
-  }
   return res.data;
 };
 

@@ -47,7 +47,7 @@ const Profile = () => {
   const userPost = posts?.map((post) => {
     const isAlreadyLiked = post.likes_post?.includes(user?.user._id);
 
-    if (userInfo?._id === post?.userId) {
+    if (userInfo?._id === post?.userId?._id) {
       return (
         <div className="userPost" key={post._id}>
           <Card

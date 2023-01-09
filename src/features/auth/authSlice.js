@@ -145,8 +145,8 @@ export const authSlice = createSlice({
       })
 
       .addCase(updateUserById.fulfilled, (state, action) => {
-        state.user = action.payload;
-        console.log(action.payload)
+        state.userInfo = action.payload.user;
+        
       });
   },
 });
