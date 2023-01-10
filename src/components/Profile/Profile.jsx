@@ -49,7 +49,7 @@ const Profile = () => {
 
     if (userInfo?._id === post?.userId?._id) {
       return (
-        <div className="userPost" key={post._id}>
+        <div key={post._id}>
           <Card
             hoverable
             style={{ width: 340 }}
@@ -102,7 +102,7 @@ const Profile = () => {
   return (
     <div className="profile">
       <UserInfo />
-      {userPost}
+      <div className="userPost">{userPost}</div>
     </div>
   );
 };
