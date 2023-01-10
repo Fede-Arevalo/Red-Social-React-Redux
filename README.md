@@ -1,46 +1,120 @@
-# Getting Started with Create React App and Redux
+![Sin título](https://user-images.githubusercontent.com/105200893/211443436-21b7f042-923f-4013-ab3c-a7dd8e2c609b.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# About the project
 
-## Available Scripts
+### Exercise requirements
+* User Registration.
+* User login.
+* That you can see the publications and create new ones.
+* That the publications made by the logged in user can be edited and deleted.
+* Give / remove Like a post.
+* Search engine for user profiles or posts.
+* That in your profile you can see your data and your posts.
+* That you can comment on the posts.
+* Use of branches with git, when the project is finished there should be two branches, the main and the develop.
+* README Presentation.
+* React Router.
+* Use Redux.
+* Using SASS.
+* Important design.
+* The components may not exceed 400 lines of code.
+* The functions must not exceed 75 lines of code.
 
-In the project directory, you can run:
+#### Extras
+* Frontend available in production (Vercel,AWS, etc.).
+* User can follow other users and have followers.
+* CRUD of comments.
+* That you can only edit and delete comments that you create.
+* The user can upload photos in the posts and change their profile picture.
+* The user can give likes to the comments of the posts.
+* The user in his profile can see the number of followers and number of how many he follows.
+* User can see who follows him and who he follows.
+* Implementation of guards.
+* Make it responsive.
 
-### `npm start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+##  📋 Pre requirements
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
 
-### `npm test`
+1 - In order to start the project first make a clone:
+```
+git clone https://github.com/Fede-Arevalo/Red-Social-React-Redux
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2 - Once the project is cloned, you must install the necessary modules with npm:
 
-### `npm run build`
+```
+npm i 
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3 - Clone the backend repository
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+git clone https://github.com/Fede-Arevalo/MongoDB-Mongoose
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4 - Start the server on the backend
 
-### `npm run eject`
+```
+npm run dev
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5 - Start the project on the frontend
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🦾 Used technology
 
-## Learn More
+- [SCSS](https://sass-lang.com/)
+- [React](https://es.reactjs.org/)
+- [Redux](https://es.redux.js.org/)
+- [Router](https://reactrouter.com/)
+- [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)
+- [AntDesign](https://ant.design/)
+- [MongoDB Atlas](https://www.mongodb.com/es/cloud/atlas/efficiency/)
+- [Express](https://expressjs.com/es/)
+- [Node](https://nodejs.org/en/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 📷 Preview
+
+### Login
+
+![image](https://user-images.githubusercontent.com/105200893/211446260-a8db8abf-41fd-4b48-9007-3b716aa6f042.png)
+
+<br>
+
+### Register
+
+![image](https://user-images.githubusercontent.com/105200893/211446388-11e8038a-201b-4fa7-bd5e-b83eeefae6ee.png)
+
+### Login
+
+![image](https://user-images.githubusercontent.com/105200893/211446479-d0f445c6-043d-46c3-871f-2591b33f17aa.png)
+
+### Profile
+
+![image](https://user-images.githubusercontent.com/105200893/211446768-7a346add-3730-4fcf-938a-1227b7629c4f.png)
+
+### Post
+
+![image](https://user-images.githubusercontent.com/105200893/211447033-e923bc3a-da21-4e15-a883-232ba9d1cbde.png)
+
+### Home
+
+![image](https://user-images.githubusercontent.com/105200893/211447275-86beefbf-d1f7-4fc1-9b33-b5566ad325b5.png)
+
+
+
+
+<br>
+
+## 👾 Developer
+
+[Federico Arévalo](https://github.com/Fede-Arevalo)
