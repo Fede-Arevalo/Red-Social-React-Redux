@@ -33,15 +33,19 @@ const PostDetail = () => {
 
   const comments = post.commentIds.map((comment) => {
     return (
-      <div key={comment._id}>
+      <div classkey={comment._id}>
+        <Avatar
+          size={20}
+          src={"http://localhost:8080/" + comment.userId?.imageUser}
+          alt={comment.userId?.name}
+        />{" "}
+        <span>{comment.userId?.name}</span>
         <p>{comment.comment}</p>
       </div>
     );
   });
 
   const isAlreadyLiked = post.likes_post?.includes(user?.user._id);
-
-  console.log(user?.user._id);
 
   async function likePost() {
     await dispatch(like(post._id));
