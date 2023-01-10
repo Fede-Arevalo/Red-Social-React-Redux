@@ -1,8 +1,10 @@
-import { notification } from "antd";
+import { Button, notification } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createPost, reset } from "../../features/posts/postsSlice";
+import { CloudUploadOutlined } from "@ant-design/icons";
+import "./AddPost.scss";
 
 const AddPost = () => {
   const dispatch = useDispatch();
@@ -42,26 +44,39 @@ const AddPost = () => {
   };
 
   return (
-    <>
-      <h1>AddPost</h1>
-
+    <div className="addPost">
       <div>
-        <form onSubmit={onSubmit}>
-          <br />
-          <br />
-          <input type="file" name="imagePost" placeholder="image" />
-          <br />
-          <br />
+        <form className="addPost-form" onSubmit={onSubmit}>
+          <div className="custom-input-file">
+            <input
+              className="input-file"
+              type="file"
+              name="imagePost"
+              placeholder="image"
+            />
+            <CloudUploadOutlined /> Image Post
+          </div>
+
           <input type="text" name="title" placeholder="Title" />
-          <br />
-          <br />
-          <input type="text" name="body" placeholder="Write something" />
-          <br />
-          <br />
-          <button type="submit">Publish</button>
+
+          <textarea
+            name="body"
+            rows="20"
+            cols="26"
+            placeholder="Write something"
+          />
+
+          <Button
+            type="primary"
+            block
+            htmlType="submit"
+            className="addPost-form-button"
+          >
+            Add Post
+          </Button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
