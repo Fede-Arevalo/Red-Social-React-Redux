@@ -84,11 +84,6 @@ npm start
 
 # 📷 Preview
 
-### Login
-
-![image](https://user-images.githubusercontent.com/105200893/211446260-a8db8abf-41fd-4b48-9007-3b716aa6f042.png)
-
-<br>
 
 ### Register
 
